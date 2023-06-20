@@ -5,6 +5,7 @@ import { useAuth } from "../../context/AuthProvider";
 import calculateTotal from "../../helpers/calculateTotal";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import GetCart from "../../helpers/getCart";
+import { BASE_URL } from "../../helpers/global";
 
 const Checkout = () => {
     const { currentUser } = useAuth();
@@ -18,7 +19,7 @@ const Checkout = () => {
         const phone = form.phone.value;
         const address = form.address.value;
 
-        let orderData = {}
+        let orderData = {};
 
         const order = data?.map((item) => {
             return {
@@ -27,16 +28,30 @@ const Checkout = () => {
                     ...item.data,
                     quantity: item.quantity,
                 },
-                name,
                 phone,
-                address,
             };
         });
 
         orderData.order = order;
         orderData.price = total;
+        orderData.name = name;
+        orderData.phone = phone;
+        orderData.address = address;
 
         console.log(orderData);
+
+        fetch(`${BASE_URL}/order/create`, {
+            method: "POST",
+            headers: {
+                "Content-Type": "application/json",
+            },
+            body: JSON.stringify(orderData),
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                window.location.replace(data.url);
+            });
     };
 
     return (

@@ -55,9 +55,19 @@ const Navbar = () => {
                                         {currentUser?.name}
                                     </p>
                                 </li>
-                                <li>
-                                    <Link to="/dashboard">Dashboard</Link>
-                                </li>
+                                {currentUser?.role === "admin" ? (
+                                    <li>
+                                        <Link to={"/dashboard"}>Dashboard</Link>
+                                    </li>
+                                ) : (
+                                    <li>
+                                        <Link
+                                            to={`/orders/${currentUser.phone}`}
+                                        >
+                                            My Orders
+                                        </Link>
+                                    </li>
+                                )}
                                 <li>
                                     <Link
                                         onClick={() => logout()}
@@ -71,7 +81,9 @@ const Navbar = () => {
                     ) : (
                         <div className="md:hidden">
                             <Link to={"/login"}>
-                                <Button>Log In</Button>
+                                <Button className={"bg-primary text-white"}>
+                                    Log In
+                                </Button>
                             </Link>
                         </div>
                     )}
@@ -101,13 +113,23 @@ const Navbar = () => {
                                 className="menu menu-compact dropdown-content p-2 shadow-md bg-white font-medium text-neutral rounded-md min-w-max"
                             >
                                 <li className="cursor-default">
-                                    <p className="cursor-default hover:bg-white text-primary">
+                                    <p className="cursor-default text-primary hover:text-primary hover:bg-white">
                                         {currentUser?.name}
                                     </p>
                                 </li>
-                                <li>
-                                    <Link to="/dashboard">Dashboard</Link>
-                                </li>
+                                {currentUser?.role === "admin" ? (
+                                    <li>
+                                        <Link to={"/dashboard"}>Dashboard</Link>
+                                    </li>
+                                ) : (
+                                    <li>
+                                        <Link
+                                            to={`/orders/${currentUser.phone}`}
+                                        >
+                                            My Orders
+                                        </Link>
+                                    </li>
+                                )}
                                 <li>
                                     <Link
                                         onClick={() => logout()}
@@ -121,7 +143,9 @@ const Navbar = () => {
                     ) : (
                         <div>
                             <Link to={"/login"}>
-                                <Button>Log In</Button>
+                                <Button className={"bg-primary text-white"}>
+                                    Log In
+                                </Button>
                             </Link>
                         </div>
                     )}

@@ -273,7 +273,7 @@ const Register = () => {
                                 disabled={isLoading}
                                 type="submit"
                                 className={
-                                    "w-full font-bold disabled:opacity-50 disabled:cursor-not-allowed"
+                                    "w-full font-bold disabled:opacity-50 disabled:cursor-not-allowed bg-primary text-white"
                                 }
                             >
                                 {isLoading ? (

@@ -29,7 +29,7 @@ const Cart = () => {
                         >
                             <Button
                                 className={
-                                    "rounded-sm bg-neutral md:text-xl uppercase"
+                                    "rounded-sm bg-neutral text-white md:text-xl uppercase"
                                 }
                             >
                                 Order some food
