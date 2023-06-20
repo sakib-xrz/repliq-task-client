@@ -4,7 +4,7 @@ import Wrapper from "../../components/Wrapper";
 import { AiOutlineArrowLeft } from "react-icons/ai";
 import GetCart from "../../helpers/getCart";
 import { Link } from "react-router-dom";
-import calculateTax from "../../helpers/calculateTax";
+import calculateTotal from "../../helpers/calculateTotal";
 
 const Cart = () => {
     const { data, refetch } = GetCart();
@@ -13,16 +13,7 @@ const Cart = () => {
         localStorage.removeItem("cart");
     };
 
-    const subtotal = data?.reduce((accumulator, currentValue) => {
-        return accumulator + currentValue?.quantity * currentValue?.data?.price;
-    }, 0);
-
-    const shipping = subtotal < 1 ? 0 : 5;
-
-    const tax = calculateTax(subtotal);
-
-    const total = (subtotal + shipping + tax)?.toFixed(2);
-
+    const { subtotal, shipping, tax, total } = calculateTotal(data);
 
     return (
         <Wrapper className="pt-14 md:pt-20 space-y-14 lg:space-y-20">
