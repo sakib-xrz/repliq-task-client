@@ -57,9 +57,6 @@ const Navbar = () => {
                                     </p>
                                 </li>
                                 <li>
-                                    <Link>Profile</Link>
-                                </li>
-                                <li>
                                     <Link to="/dashboard">Dashboard</Link>
                                 </li>
                                 <li>
@@ -108,9 +105,6 @@ const Navbar = () => {
                                     <p className="cursor-default hover:bg-white text-primary">
                                         {currentUser?.name}
                                     </p>
-                                </li>
-                                <li>
-                                    <Link>Profile</Link>
                                 </li>
                                 <li>
                                     <Link to="/dashboard">Dashboard</Link>
