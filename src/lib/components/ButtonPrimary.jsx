@@ -5,7 +5,7 @@ const ButtonPrimary = ({ children, bgColor, onClick }) => {
             onClick={onClick}
             className={`border-2 ${
                 bgColor ?? "bg-transparent"
-            }  border-l-0 border-r-0 border-transparent border-b-neutral text-neutral font-medium py-2 px-6 rounded-md transition-all hover:bg-neutral hover:text-primary`}
+            }  border-l-0 border-r-0 border-transparent border-b-neutral text-neutral font-medium py-2 px-6 rounded-md transition-all hover:bg-neutral hover:text-white`}
         >
             {children}
         </button>

@@ -4,7 +4,7 @@ const Button = ({ children, className, type, disabled }) => {
         <button
             disabled={disabled}
             type={type}
-            className={`bg-primary ${className} text-white font-medium py-2 px-6 rounded-md hover:bg-dark 
+            className={`${className} font-medium py-2 px-6 rounded-md hover:bg-dark 
     duration-500`}
         >
             {children}

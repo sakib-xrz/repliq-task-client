@@ -7,7 +7,6 @@ import { useAuth } from "../context/AuthProvider";
 
 const Navbar = () => {
     const { currentUser, logout } = useAuth();
-    console.log(currentUser);
 
     const { data } = GetCart();
 

@@ -8,12 +8,12 @@ import calculateTotal from "../../helpers/calculateTotal";
 
 const Cart = () => {
     const { data, refetch } = GetCart();
+    const { subtotal, shipping, tax, total } = calculateTotal(data);
 
     const handleClear = () => {
         localStorage.removeItem("cart");
     };
 
-    const { subtotal, shipping, tax, total } = calculateTotal(data);
 
     return (
         <Wrapper className="pt-14 md:pt-20 space-y-14 lg:space-y-20">
@@ -107,14 +107,14 @@ const Cart = () => {
                                 <Link to={"/checkout"}>
                                     <Button
                                         className={
-                                            "w-full rounded-sm bg-neutral md:text-xl"
+                                            "w-full rounded-sm text-white bg-neutral md:text-xl"
                                         }
                                     >
                                         PROCEED TO CHECKOUT
                                     </Button>
                                 </Link>
                                 <Link
-                                    to={"/shop"}
+                                    to={"/"}
                                     className="flex items-center gap-2 mt-5 cursor-pointer"
                                 >
                                     <AiOutlineArrowLeft className="text-xl mt-1" />
