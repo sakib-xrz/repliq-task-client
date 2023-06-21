@@ -4,6 +4,7 @@ import { toast } from "react-hot-toast";
 import { BASE_URL } from "../helpers/global";
 
 const AuthContext = createContext();
+console.log(BASE_URL);
 
 export function useAuth() {
     const context = useContext(AuthContext);

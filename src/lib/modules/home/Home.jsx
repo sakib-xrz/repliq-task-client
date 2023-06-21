@@ -13,14 +13,14 @@ const Home = () => {
     const [categoryWiseData, setCategoryWiseData] = useState([]);
     const [loading, setLoading] = useState(true);
 
-    axios.get(`${BASE_URL}/menu/categories`).then(function (response) {
-        const filteredCategory = response?.data?.data?.filter(
-            (data) => data !== "offered" && data !== "popular"
-        );
-        setCategories(filteredCategory);
-    });
-
     useEffect(() => {
+        axios.get(`${BASE_URL}/menu/categories`).then(function (response) {
+            const filteredCategory = response?.data?.data?.filter(
+                (data) => data !== "offered" && data !== "popular"
+            );
+            setCategories(filteredCategory);
+        });
+
         axios
             .get(`${BASE_URL}/menu/${selectedCategory}`)
             .then(function (response) {
