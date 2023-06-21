@@ -1,6 +1,7 @@
 /* eslint-disable react/prop-types */
 import { RxCross2 } from "react-icons/rx";
 import { useState } from "react";
+import { toast } from "react-hot-toast";
 
 const CartItem = ({ item, refetch }) => {
     const { image, price, name, category } = item.data;
@@ -56,6 +57,7 @@ const CartItem = ({ item, refetch }) => {
         const updatedData = data.filter((item) => item.data._id !== deleteItem);
         localStorage.setItem("cart", JSON.stringify(updatedData));
         refetch();
+        toast.success("Successfully Remove")
     };
 
     return (

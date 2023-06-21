@@ -1,4 +1,5 @@
 /* eslint-disable react/prop-types */
+import { toast } from "react-hot-toast";
 import GetCart from "../helpers/getCart";
 import setCart from "../helpers/setCart";
 import ButtonPrimary from "./ButtonPrimary";
@@ -10,6 +11,7 @@ const MenuCard = ({ img, title, description, price, item }) => {
             quantity: 1,
         };
         setCart(cartItem);
+        toast.success("Successfully Added")
     };
 
     const { refetch } = GetCart();

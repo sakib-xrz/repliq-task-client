@@ -10,10 +10,13 @@ import Success from "../../pages/success";
 import Fail from "../../pages/fail";
 import Order from "../../pages/order";
 import Dashboard from "../../pages/dashboard";
-import Summery from "../../pages/summery";
+import Summary from "../../pages/summary";
 import Customers from "../../pages/customers";
 import Orders from "../../pages/orders";
 import Product from "../../pages/products";
+import PrivateRoute from "./PrivateRoute";
+import LoginRoute from "./LoginRoute";
+import AdminRoute from "./AdminRoute";
 
 const router = createBrowserRouter([
     {
@@ -35,35 +38,67 @@ const router = createBrowserRouter([
             },
             {
                 path: "/checkout",
-                element: <Checkout />,
+                element: (
+                    <PrivateRoute>
+                        <Checkout />
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "/orders/:phone",
-                element: <Order />,
+                element: (
+                    <PrivateRoute>
+                        <Order />
+                    </PrivateRoute>
+                ),
             },
             {
                 path: "/dashboard",
-                element: <Dashboard />,
+                element: (
+                    <AdminRoute>
+                        <Dashboard />
+                    </AdminRoute>
+                ),
                 children: [
                     {
                         path: "/dashboard",
-                        element: <Summery />,
+                        element: (
+                            <AdminRoute>
+                                <Summary />
+                            </AdminRoute>
+                        ),
                     },
                     {
-                        path: "/dashboard/summery",
-                        element: <Summery />,
+                        path: "/dashboard/summary",
+                        element: (
+                            <AdminRoute>
+                                <Summary />
+                            </AdminRoute>
+                        ),
                     },
                     {
                         path: "/dashboard/customers",
-                        element: <Customers />,
+                        element: (
+                            <AdminRoute>
+                                <Customers />
+                            </AdminRoute>
+                        ),
                     },
                     {
                         path: "/dashboard/orders",
-                        element: <Orders />,
+                        element: (
+                            <AdminRoute>
+                                <Orders />
+                            </AdminRoute>
+                        ),
                     },
                     {
                         path: "/dashboard/products",
-                        element: <Product />,
+                        element: (
+                            <AdminRoute>
+                                <Product />
+                            </AdminRoute>
+                        ),
                     },
                 ],
             },
@@ -71,11 +106,19 @@ const router = createBrowserRouter([
     },
     {
         path: "/login",
-        element: <Login />,
+        element: (
+            <LoginRoute>
+                <Login />
+            </LoginRoute>
+        ),
     },
     {
         path: "/register",
-        element: <Register />,
+        element: (
+            <LoginRoute>
+                <Register />
+            </LoginRoute>
+        ),
     },
     {
         path: "/payment/success/:tranId",

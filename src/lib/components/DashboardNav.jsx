@@ -1,28 +1,27 @@
-import { useState } from "react";
-import { Link } from "react-router-dom";
+import { NavLink } from "react-router-dom";
 
 const DashboardNav = () => {
-    const [selected, setSelected] = useState("Summery");
     const routes = [
-        { name: "Summery", path: "/dashboard/summery" },
+        { name: "Summary", path: "/dashboard/summary" },
         { name: "Customers", path: "/dashboard/customers" },
         { name: "Orders", path: "/dashboard/orders" },
         { name: "Products", path: "/dashboard/products" },
     ];
 
     return (
-        <ul className="flex justify-center gap-5 lg:gap-10 mb-10 mt-5">
+        <ul className="lg:sticky lg:top-28 flex lg:flex-col justify-center gap-5 mb-10 lg:mx-10 mt-20 lg:mt-0">
             {routes.map((item, i) => (
-                <Link
+                <NavLink
                     to={item?.path}
                     key={i}
-                    onClick={() => setSelected(item?.name)}
-                    className={`${
-                        selected === item?.name ? "text-primary" : ""
-                    }  capitalize font-bold lg:text-2xl cursor-pointer hover:text-primary`}
+                    className={({ isActive }) =>
+                        isActive
+                            ? "capitalize font-bold lg:text-2xl cursor-pointer hover:text-primary text-primary"
+                            : "capitalize font-bold lg:text-2xl cursor-pointer hover:text-primary"
+                    }
                 >
                     {item?.name}
-                </Link>
+                </NavLink>
             ))}
         </ul>
     );

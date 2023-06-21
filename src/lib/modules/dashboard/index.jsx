@@ -3,9 +3,13 @@ import DashboardNav from "../../components/DashboardNav";
 
 const Dashboard = () => {
     return (
-        <div className="pt-14 md:pt-20 space-y-14 lg:space-y-20">
-            <DashboardNav />
-            {Outlet}
+        <div className="grid grid-cols-12">
+            <div className="lg:h-screen lg:bg-gray-100 col-span-12 lg:col-span-2">
+                <DashboardNav />
+            </div>
+            <div className="lg:pt-24 col-span-12 lg:col-span-10 px-10">
+                <Outlet />
+            </div>
         </div>
     );
 };
